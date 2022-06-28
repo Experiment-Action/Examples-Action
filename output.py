@@ -7,6 +7,6 @@ result = {
 
 #os.popen("echo ::set-output name=task::%s" % result['task'])
 #os.popen("echo ::set-output name=msg::%s" % result['msg'])
-
+print("wahahah")
 print(f"::set-output name=task::{result['task']}")
 print(f"::set-output name=msg::{result['msg']}")

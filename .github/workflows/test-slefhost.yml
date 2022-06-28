@@ -17,8 +17,8 @@ jobs:
     if: |
       contains(github.event.pull_request.body, '[X] needs automatic test cases check') ||
       contains(github.event.comment.body, '@cocos-robot run test cases')
-    runs-on: self-hosted-win
-
+    #runs-on: self-hosted-win
+    runs-on: windows-2019
     steps:
       - name: Get PR Number
         id: check_pr
@@ -65,15 +65,15 @@ jobs:
       - name: Checkout engine
         uses: actions/checkout@v3
         with:
-          ref: ${{ steps.parse_pr.outputs.pr_head_sha }}
+          ref: ${{ steps.parse_pr.outputs.pr_base_ref }}
 
       - name: Checkout rebase
         run: |
-          gh pr checkout ${{ steps.check_pr.outputs.pr_number }}
-          git reset --hard
-          git checkout oringin/${{ steps.parse_pr.outputs.pr_base_ref }}
+          git reset --hard   
+          git checkout origin/${{ steps.parse_pr.outputs.pr_base_ref }}
+          git pull origin ${{ steps.parse_pr.outputs.pr_base_ref }} --allow-unrelated-histories          
           git branch -D ${{ steps.parse_pr.outputs.pr_base_ref }}
-          git branch -D pull-${{ steps.check_pr.outputs.pr_number }}
           git branch ${{ steps.parse_pr.outputs.pr_base_ref }}
           git fetch origin pull/${{ steps.check_pr.outputs.pr_number }}/head:pull-${{ steps.check_pr.outputs.pr_number }}
-          git merge --ff --no-verify -m "PR Test" pull-${{ steps.check_pr.outputs.pr_number }}
+          git merge --ff -s recursive --no-verify -m "PR Test" origin/${{ steps.parse_pr.outputs.pr_base_ref }} pull-${{ steps.check_pr.outputs.pr_number }}
+          cat *.txt
