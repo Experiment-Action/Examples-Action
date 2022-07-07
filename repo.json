@@ -1,0 +1,40 @@
+{
+    "engine": {
+        "branch": "master",
+        "workflow": true,
+        "https": {
+            "gitlab": "https://gitlab.xxxx.net/engine.git",
+            "github": "https://github.com/Lab-Yu/engine.git"
+        },
+        "git": {
+            "gitlab": "https://gitlab.xxxx.net/engine.git",
+            "github": "git@github.com:/Lab-Yu/engine.git"
+        }
+    },
+
+    "cocos-engine-external": {
+        "branch": "master",
+        "workflow": false,
+        "https": {
+            "gitlab": "https://gitlab.xxxx.net/cocos-engine-external.git",
+            "github": "https://github.com/Lab-Yu/cocos-engine-external.git"
+        },
+        "git": {
+            "gitlab": "https://gitlab.xxxx.net/cocos-engine-external.git",
+            "github": "git@github.com:Lab-Yu/cocos-engine-external.git"
+        }
+    },
+
+    "test": {
+        "branch": "master",
+        "workflow": true,
+        "https": {
+            "gitlab": "https://gitlab.xxxx.net/fish0607/test.git",
+            "github": "https://github.com/fish0607/test.git"
+        },
+        "git": {
+            "gitlab": "https://gitlab.xxxx.net/fish0607/test.git",
+            "github": "git@github.com:fish0607/test.git"
+        }
+    }
+}
