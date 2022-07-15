@@ -11,3 +11,8 @@ jobs:
     steps:
       - name: checkOut code
         uses: actions/checkout@v3
+      - name: Check .update-cache.json
+        id: check_files
+        uses: andstor/file-existence-action@v1
+        with:
+          files: "./workflow/.update-cache.json"
