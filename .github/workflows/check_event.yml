@@ -1,0 +1,13 @@
+name: 'Check Develop Environment'
+
+on: 
+  pull_request:
+    types: [closed]
+
+jobs:
+  WinEnvironment:
+    if: github.event.pull_request.merged == true
+    runs-on: run-test-win01
+    steps:
+      - name: checkOut code
+        uses: actions/checkout@v3
