@@ -11,7 +11,7 @@ def out_markdown(content):
 """ % line
     print(f"::set-output name=details::{markdown}")
     txt = "afswewtw"
-    print(f"::set-output name=msg::{markdown}")
+    print(f"::set-output name=msg::{txt}")
     return markdown
     
     
