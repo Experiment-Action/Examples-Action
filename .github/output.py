@@ -5,11 +5,11 @@ def out_markdown(content):
 | Platform | build | runned | result | FailScene |
 | :---: | :---: | :---: | :---: | :---: |
 """
+
     for line in content:
-        markdown = markdown + """%s
-""" % line
+        markdown = markdown + """%s\%0A""" % line
     #print(f"::set-output name=report::{markdown}")
-    print(f"::set-output name=report::{"wajaj"}")
+    print(f"::set-output name=msg::{markdown}")
     return markdown
     
     
