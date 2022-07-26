@@ -14,7 +14,7 @@ jobs:
       - name: py_run
         id: py_run
         run: |
-          python ./github/output.py
+          python .github/output.py
 
       - name: Update Comment
         uses: peter-evans/create-or-update-comment@v1
