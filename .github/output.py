@@ -9,9 +9,9 @@ def out_markdown(content):
     for line in content:
         markdown = markdown + """%s
         """ % line
-    print(f"::set-output name=report::{markdown}")
+    print(f"::set-output name=details::{markdown}")
     txt = "afswewtw"
-    print(f"::set-output name=msg::{txt}")
+    print(f"::set-output name=msg::{markdown}")
     return markdown
     
     
