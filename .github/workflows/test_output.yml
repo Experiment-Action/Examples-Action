@@ -16,13 +16,13 @@ jobs:
         run: |
           python ./github/output.py
 
-        - name: Update Comment
-          uses: peter-evans/create-or-update-comment@v1
-          with:
-            issue-number: 103
-            body: |
-              @${{ steps.parse_pr.outputs.pr_author }}, Please check the result of `run test cases`:
-              - Test Platform: Windows
-              - GitHub Action: https://github.com/cocos/cocos-engine/actions/runs/${{ github.run_id }}
-              ## Task Details: 
-              ${{ steps.py_run.outputs.report }}
+      - name: Update Comment
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          issue-number: 103
+          body: |
+            @${{ steps.parse_pr.outputs.pr_author }}, Please check the result of `run test cases`:
+            - Test Platform: Windows
+            - GitHub Action: https://github.com/cocos/cocos-engine/actions/runs/${{ github.run_id }}
+            ## Task Details: 
+            ${{ steps.py_run.outputs.report }}
