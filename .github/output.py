@@ -13,5 +13,5 @@ def out_markdown(content):
     
     
     
-content = ['| 1 | 4 | 5 | 353 | 43535 | ', '| 567575 | 3535 | 5675 | dgds | ghfs | '  ]
+content = ['| 1 | 4 | 5 | 353 | 43535 | ', '| 567575 | 3535 | 5675 | dgds | ghfs ☑ | '  ]
 out_markdown(content)
