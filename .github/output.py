@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 def out_markdown(content):
-    markdown = """| Platform | build | runned | result | FailScene | %0A | :---: | :---: | :---: | :---: | :---: | %0A"""
+    markdown = """%0A| Platform | build | runned | result | FailScene | %0A | :---: | :---: | :---: | :---: | :---: | %0A"""
 
     for line in content:
         markdown = markdown + line + '%0A'
