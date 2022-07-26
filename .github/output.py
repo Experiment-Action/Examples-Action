@@ -9,7 +9,7 @@ def out_markdown(content):
     for line in content:
         markdown = markdown + """%s
 """ % line
-    print(f"::set-output name=details::{markdown}")
+    print(f"::set-output name=details::{content}")
     txt = "afswewtw"
     print(f"::set-output name=msg::{txt}")
     return markdown
