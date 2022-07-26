@@ -8,7 +8,8 @@ def out_markdown(content):
     for line in content:
         markdown = markdown + """%s
 """ % line
-    print(f"::set-output name=report::{markdown}")
+    #print(f"::set-output name=report::{markdown}")
+    print(f"::set-output name=report::{"wajaj"}")
     return markdown
     
     
