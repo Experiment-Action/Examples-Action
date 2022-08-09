@@ -1,7 +1,10 @@
 {
     "engine": {
         "branch": "master",
-        "workflow": true,
+        "workflow": {
+            "tag": true,
+            "branch": false
+        },
         "https": {
             "gitlab": "https://gitlab.xxxx.net/engine.git",
             "github": "https://github.com/Lab-Yu/engine.git"
@@ -14,7 +17,10 @@
 
     "cocos-engine-external": {
         "branch": "master",
-        "workflow": false,
+        "workflow": {
+            "tag": false,
+            "branch": true
+        },
         "https": {
             "gitlab": "https://gitlab.xxxx.net/cocos-engine-external.git",
             "github": "https://github.com/Lab-Yu/cocos-engine-external.git"
@@ -27,7 +33,10 @@
 
     "test": {
         "branch": "master",
-        "workflow": true,
+        "workflow": {
+            "tag": true,
+            "branch": true
+        },
         "https": {
             "gitlab": "https://gitlab.xxxx.net/fish0607/test.git",
             "github": "https://github.com/fish0607/test.git"
@@ -36,5 +45,19 @@
             "gitlab": "https://gitlab.xxxx.net/fish0607/test.git",
             "github": "git@github.com:fish0607/test.git"
         }
-    }
+    },
+    "engine-external": {
+        "workflow": {
+            "tag": false,
+            "branch": false
+        },
+        "https": {
+            "gitlab": "https://gitlab.cocos.net/publics/cocos2d-x-lite-external.git",
+            "github": "https://github.com/cocos/cocos-engine-external.git"
+        },
+        "git": {
+            "gitlab": "https://gitlab.cocos.net/publics/cocos2d-x-lite-external.git",
+            "github": "git@github.com:cocos/cocos-engine-external.git"
+        }
+    }    
 }
