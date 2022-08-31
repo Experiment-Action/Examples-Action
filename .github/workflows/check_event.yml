@@ -2,11 +2,11 @@ name: 'Check Develop Environment'
 
 on: 
   pull_request:
-    types: [closed]
+#    types: [closed]
 
 jobs:
   WinEnvironment:
-    if: github.event.pull_request.merged == true
+    #if: github.event.pull_request.merged == true
     runs-on: run-test-win01
     steps:
       - name: checkOut code
@@ -16,3 +16,12 @@ jobs:
         uses: andstor/file-existence-action@v1
         with:
           files: "./workflow/.update-cache.json"
+      - name: Get change files
+        id: files
+        uses: jitterbit/get-changed-files@v1
+        with:
+          format: 'json'
+
+      - name: Generate change file list
+        run: |
+          echo "${{ steps.files.outputs.modified }}" > c_file.json
