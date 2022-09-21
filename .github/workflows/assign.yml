@@ -5,8 +5,8 @@ on: pull_request_target
 
 jobs:
   auto-assign:
-    if: 
-      (contains(github.event.pull_request.body, 'Automated PR to genbindings'))
+    #if: 
+    #  (contains(github.event.pull_request.body, 'Automated PR to genbindings'))
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
