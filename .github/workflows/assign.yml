@@ -1,6 +1,5 @@
 name: <Native> Assign Generated PR
 
-
 on: pull_request_target
 
 jobs:
