@@ -1,6 +1,7 @@
 name: Assign Generated PR2
 
-on: pull_request_target
+#on: pull_request_target
+on: pull_request
 
 jobs:
   auto-assign:
