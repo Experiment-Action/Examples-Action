@@ -15,7 +15,12 @@ jobs:
         id: py_run
         run: |
           python .github/output.py
-
+      
+      - name: test_sh
+        run:
+          WA='wahah'
+          echo '${WA}'
+          echo "${WA}"
       - name: Update Comment
         uses: peter-evans/create-or-update-comment@v1
         with:
