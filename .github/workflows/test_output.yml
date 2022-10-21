@@ -15,6 +15,9 @@ jobs:
         id: py_run
         run: |
           python .github/output.py
+          echo ${{ env.details }}  
+          echo ${{ env.msg }}
+          
       
       - name: Set color
         id: random-color-generator
