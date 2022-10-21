@@ -15,9 +15,6 @@ jobs:
         id: py_run
         run: |
           python .github/output.py
-          echo ${{ env.details }}  
-          echo ${{ env.msg }}
-          
       
       - name: Set color
         id: random-color-generator
@@ -33,8 +30,11 @@ jobs:
             @${{ steps.parse_pr.outputs.pr_author }}, Please check the result of `run test cases`:
             - Test Platform: Windows
             - GitHub Action: https://github.com/cocos/cocos-engine/actions/runs/${{ github.run_id }}
-            - Task Details: ${{ steps.py_run.outputs.details }}  
+            - Task Details: 
+              ${{ steps.py_run.outputs.details }}
+
             ## msg
-             ${{ steps.py_run.outputs.msg }}  
-             ${{ steps.py_run.outputs.wahah }}
+             ${{ steps.py_run.outputs.msg }}
              ${{ steps.random-color-generator.outputs.SELECTED_COLOR }}  
+             ${{ steps.py_run.outputs.wahah }}
+
