@@ -1,5 +1,12 @@
 # -*- coding: utf-8 -*-
 
+import os
+env_file = os.getenv('GITHUB_ENV')
+hello='hello'
+
+with open(env_file, "a") as myfile:
+    myfile.write(f"wahah={hello}")
+
 def out_markdown(content):
     markdown = """%0A%0A| Platform | build | runned | result | FailScene | %0A| :---: | :---: | :---: | :---: | :---: | %0A"""
 
