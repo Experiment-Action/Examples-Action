@@ -10,3 +10,5 @@ result = {
 print("wahahah")
 print(f"::set-output name=task::{result['task']}")
 print(f"::set-output name=msg::{result['msg']}")
+
+print(os.getenv(GITHUB_OUTPUT))
