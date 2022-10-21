@@ -9,7 +9,7 @@ hello='^0^ 我是测试的 ^0^'
 
 
 def out_markdown(content):
-    markdown = '''%0A%0A| Platform | build | runned | result | FailScene | %0A| :---: | :---: | :---: | :---: | :---: | %0A'''
+    markdown = '| Platform | build | runned | result | FailScene | %0A| :---: | :---: | :---: | :---: | :---: | '
 
     for line in content:
         markdown = markdown + line + '%0A'
