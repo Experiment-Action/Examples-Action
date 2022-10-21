@@ -16,8 +16,8 @@ def out_markdown(content):
     #print(f"::set-output name=details::{markdown}")
     txt = "afswewtw"
     #print(f"::set-output name=msg::{txt}")
-    with open(env_file, "a") as f:
-        f.write(f"wahah={hello}")
+    #with open(env_file, "a") as f:
+    #    f.write(f"wahah={hello}")
 
     with open(output_file, "a") as f:
         f.write(f"wahah={hello}")
