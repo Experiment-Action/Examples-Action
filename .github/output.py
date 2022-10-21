@@ -20,8 +20,8 @@ def out_markdown(content):
     #    f.write(f"wahah={hello}")
 
     with open(output_file, "a") as f:
-        f.write(f"wahah={hello}")
-        f.write(f"details={markdown}")
+        f.write(f"wahah={hello}\n")
+        f.write(f"details={markdown}\n")
         f.write(f"msg={txt}")
     
     return markdown
