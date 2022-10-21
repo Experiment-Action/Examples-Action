@@ -24,7 +24,7 @@ jobs:
       - name: Update Comment
         uses: peter-evans/create-or-update-comment@v1
         with:
-          issue-number: 103
+          issue-number: 112
           body: |
             @${{ steps.parse_pr.outputs.pr_author }}, Please check the result of `run test cases`:
             - Test Platform: Windows
