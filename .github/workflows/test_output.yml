@@ -29,9 +29,9 @@ jobs:
             @${{ steps.parse_pr.outputs.pr_author }}, Please check the result of `run test cases`:
             - Test Platform: Windows
             - GitHub Action: https://github.com/cocos/cocos-engine/actions/runs/${{ github.run_id }}
-            - Task Details: ${{ steps.py_run.outputs.details }}  
+            - Task Details: ${{ env.details }}  
             ## msg
-             ${{ steps.py_run.outputs.msg }}   ${{env.wahah}}
+             ${{ env.msg }}
 
 
             
