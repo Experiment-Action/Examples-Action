@@ -14,5 +14,5 @@ print(f"::set-output name=msg::{result['msg']}")
 env_file = os.getenv('GITHUB_ENV')
 hello='hello'
 with open(env_file, "a") as myfile:
-    myfile.write(f"TEST={hello}")
+    myfile.write(f"wahah={hello}")
     
