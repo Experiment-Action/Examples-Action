@@ -15,6 +15,7 @@ jobs:
         id: py_run
         run: |
           python .github/output.py
+          echo "{test_out}={sfwegwgwgw}" >> $GITHUB_OUTPUT
       
       - name: test_sh
         run:
@@ -32,6 +33,8 @@ jobs:
             - Task Details: ${{ steps.py_run.outputs.details }}  
             ## msg
              ${{ steps.py_run.outputs.msg }}  ${{ steps.py_run.outputs.wahah }}
+             ${{ steps.py_run.outputs.test_out }}
+
 
 
 
