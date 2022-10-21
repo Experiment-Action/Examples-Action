@@ -9,10 +9,10 @@ hello='^0^ 我是测试的 ^0^'
 
 
 def out_markdown(content):
-    markdown = '| Platform | build | runned | result | FailScene | %0A| :---: | :---: | :---: | :---: | :---: | '
+    markdown = '| Platform | build | runned | result | FailScene | \n | :---: | :---: | :---: | :---: | :---: | '
 
     for line in content:
-        markdown = markdown + line + '%0A'
+        markdown = markdown + line + '\n'
     #print(f"::set-output name=details::{markdown}")
     txt = "afswewtw"
     #print(f"::set-output name=msg::{txt}")
