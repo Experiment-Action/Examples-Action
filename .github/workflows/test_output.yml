@@ -31,7 +31,8 @@ jobs:
             - GitHub Action: https://github.com/cocos/cocos-engine/actions/runs/${{ github.run_id }}
             - Task Details: ${{ env.details }}  
             ## msg
-             ${{ env.msg }}
+             ${{ env.msg }}  ${{ env.wahah }}
+
 
 
             
