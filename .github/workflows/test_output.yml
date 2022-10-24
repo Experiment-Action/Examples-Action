@@ -41,12 +41,7 @@ jobs:
       - name: Create commit comment
         uses: peter-evans/commit-comment@v2
         with:
-          sha: 843dea1cc2e721163c20a5c876b5b155f7f3aa75
-          body: |
-            This is a multi-line test comment
-            - With GitHub **Markdown** :sparkles:
-            - Created by [commit-comment][1]
+          issue-number: 112
 
-            [1]: https://github.com/peter-evans/commit-comment
           path: .github/output.md
           position: 1
