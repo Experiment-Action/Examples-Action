@@ -15,6 +15,7 @@ jobs:
         id: py_run
         run: |
           python .github/output.py
+          echo "### Hello world! :rocket:" >> $env:GITHUB_STEP_SUMMARY
       
       - name: Set color
         id: random-color-generator
@@ -43,4 +44,3 @@ jobs:
         with:
           number: 112
           path: .github/output.md
-            
