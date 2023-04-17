@@ -105,27 +105,14 @@ jobs:
 #         run: |
 #           npm -v
 #           npm install --registry https://registry.npm.taobao.org
-      - name: Download test-projects
-        shell: bash
-        run: |
-          set -x
-          EXT_VERSION="v3.7"
-          PRECLONE_EXTERNAL="/Users/yonghu/prtest/actions-runner/test-projects"
-          if [ ! -d $PRECLONE_EXTERNAL ]; then
-              echo "create directory $PRECLONE_EXTERNAL"
-              # remove all sub-folders 
-              rm -rf /Users/yonghu/prtest/actions-runner/test-projects
-              mkdir -p $PRECLONE_EXTERNAL
-              git clone https://github.com/cocos/cocos-test-projects $PRECLONE_EXTERNAL
-          else
-              echo "directory $PRECLONE_EXTERNAL is ready"
-          fi
-          # if [ ! -d native/external ]; then
-          #     mkdir native/external
-          # fi
-          git -C $PRECLONE_EXTERNAL reset --hard
-          git -C $PRECLONE_EXTERNAL fetch --all --prune
-          git -C $PRECLONE_EXTERNAL archive --format=tar $EXT_VERSION | tar -C native/external -xf -
+      - name: Checkout test-projects
+        uses: actions/checkout@v3
+        with:
+          repository: cocos/cocos-test-projects
+          fetch-depth: 0
+          ref: v3.7
+          path: /Users/yonghu/prtest/actions-runner/test-projects
+  
 
 # Creator-PR-RunTestCases:
 #     runs-on: self-hosted-mac
