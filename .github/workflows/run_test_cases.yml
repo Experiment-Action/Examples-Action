@@ -37,14 +37,11 @@ jobs:
               # remove all sub-folders 
               rm -rf /Users/yonghu/prtest/actions-runner/_work/cocos-test-projects
               mkdir -p $PRECLONE_EXTERNAL
-              git clone https://github.com/cocos/cocos-test-projects.git $PRECLONE_EXTERNAL
+              git clone -b $AUTOTEST_VERSION https://github.com/cocos/cocos-test-projects.git $PRECLONE_EXTERNAL
           else
               echo "directory $PRECLONE_EXTERNAL is ready"
           fi
-          git -C $PRECLONE_EXTERNAL fetch origin
-          git -C $PRECLONE_EXTERNAL reset --hard
-          git -C $PRECLONE_EXTERNAL checkout origin/$AUTOTEST_VERSION
-          git -C $PRECLONE_EXTERNAL pull origin $AUTOTEST_VERSION --allow-unrelated-histories
+
 
   
 
