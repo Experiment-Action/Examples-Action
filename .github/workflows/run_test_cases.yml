@@ -19,13 +19,33 @@ jobs:
     runs-on: self-hosted-mac
 
     steps:
+#       - name: Checkout test-projects
+#         uses: actions/checkout@v3
+#         with:
+#           repository: cocos/cocos-test-projects
+#           fetch-depth: 0
+#           ref: v3.7
+#           path: ../../cocos-test-projects
       - name: Checkout test-projects
-        uses: actions/checkout@v3
-        with:
-          repository: cocos/cocos-test-projects
-          fetch-depth: 0
-          ref: v3.7
-          path: ../../cocos-test-projects
+        shell: bash
+        run: |
+          set -x
+          AUTOTEST_VERSION="v3.7"
+          PRECLONE_EXTERNAL="/Users/yonghu/prtest/actions-runner/_work/cocos-test-projects"
+          if [ ! -d $PRECLONE_EXTERNAL ]; then
+              echo "create directory $PRECLONE_EXTERNAL"
+              # remove all sub-folders 
+              rm -rf /Users/yonghu/prtest/actions-runner/_work/cocos-test-projects
+              mkdir -p $PRECLONE_EXTERNAL
+              git clone https://github.com/cocos/cocos-test-projects.git $PRECLONE_EXTERNAL
+          else
+              echo "directory $PRECLONE_EXTERNAL is ready"
+          fi
+          git -C $PRECLONE_EXTERNAL fetch origin
+          git -C $PRECLONE_EXTERNAL reset --hard
+          git -C $PRECLONE_EXTERNAL checkout origin/$AUTOTEST_VERSION
+          git -C $PRECLONE_EXTERNAL pull origin $AUTOTEST_VERSION --allow-unrelated-histories
+
   
 
 # Creator-PR-RunTestCases:
