@@ -32,15 +32,7 @@ jobs:
           set -x
           AUTOTEST_VERSION="v3.7"
           PRECLONE_EXTERNAL="/Users/yonghu/prtest/actions-runner/_work/cocos-test-projects"
-          if [ ! -d $PRECLONE_EXTERNAL ]; then
-              echo "create directory $PRECLONE_EXTERNAL"
-              # remove all sub-folders 
-              rm -rf /Users/yonghu/prtest/actions-runner/_work/cocos-test-projects
-              mkdir -p $PRECLONE_EXTERNAL
-              git clone -b $AUTOTEST_VERSION https://github.com/cocos/cocos-test-projects.git $PRECLONE_EXTERNAL
-          else
-              echo "directory $PRECLONE_EXTERNAL is ready"
-          fi
+          git clone -b $AUTOTEST_VERSION https://github.com/cocos/cocos-test-projects.git $PRECLONE_EXTERNAL
 
 
   
