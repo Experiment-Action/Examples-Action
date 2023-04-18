@@ -33,8 +33,8 @@ jobs:
           AUTOTEST_VERSION="v3.7"
           PRECLONE_EXTERNAL="/Users/yonghu/prtest/actions-runner/_work/cocos-test-projects"
           AUTOMATION_EXTENSIONS="/Users/yonghu/prtest/actions-runner/_work/TestAction/EXTENSIONS_DOWNLOAD"
-          git -C $PRECLONE_EXTERNAL fetch origin
           git -C $PRECLONE_EXTERNAL reset --hard
+          git -C $PRECLONE_EXTERNAL fetch --all --prune
           git -C $PRECLONE_EXTERNAL checkout origin/$AUTOTEST_VERSION
           git -C $PRECLONE_EXTERNAL pull origin $AUTOTEST_VERSION --allow-unrelated-histories
           rm -rf $PRECLONE_EXTERNAL/extensions/automation-framework
