@@ -30,10 +30,9 @@ jobs:
         shell: bash
         run: |
           set -x
-          VERSION="3.7.5"
-          AUTOTEST_VERSION=${$VERSION:0-3}
-          TEST_PROJECTS_EXTERNAL="/Users/yonghu/prtest/actions-runner/_work/cocos-test-projects"
-          CCTEST_PLUGINS="/Users/yonghu/prtest/actions-runner/_work/TestAction/EXTENSIONS_DOWNLOAD"
+          AUTOTEST_VERSION="v3.7"
+          TEST_PROJECTS_EXTERNAL="../../cocos-test-projects"
+          CCTEST_PLUGINS="../../TestAction/EXTENSIONS_DOWNLOAD"
           if [ ! -d $TEST_PROJECTS_EXTERNAL ]; then
               mkdir -p $TEST_PROJECTS_EXTERNAL
               git clone https://github.com/cocos/cocos-test-projects.git $PRECLONE_EXTERNAL
