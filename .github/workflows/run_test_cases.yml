@@ -57,6 +57,7 @@ jobs:
       - name: Update Comment
         uses: peter-evans/create-or-update-comment@v1
         with:
+          issue-number: 112
           body: |
              Please check the result of `run test cases`:
             - Test Platform: PR-Test
