@@ -4,8 +4,8 @@ on:
   push:
   pull_request_target:
   issue_comment:
-    types: [created, edited]
-
+#     types: [created, edited]
+    types: [edited]
 jobs:
   ubuntu:
     runs-on: ubuntu-latest
