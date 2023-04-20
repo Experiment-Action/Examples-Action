@@ -49,14 +49,12 @@ jobs:
 
       - name: Run test cases
         timeout-minutes: 90
-        shell: pwsh
         id: run_test_cases
         run: |
           JOBID=`cat  /Users/yonghu/prtest/nowJobId.log`
           echo $JOBID
           cd ..
           python3 -u ./python/main.py --target=job_result --jobid=$JOBID
-          Write-Host "::set-output name=pr_jobid::$($JOBID)"
       - name: Update Comment
         uses: peter-evans/create-or-update-comment@v1
         with:
