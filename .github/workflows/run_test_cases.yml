@@ -54,7 +54,7 @@ jobs:
           JOBID=`cat  /Users/yonghu/prtest/nowJobId.log`
           echo $JOBID
           cd ..
-          python3 -u ./python/main.py --target=job_result --jobid=$JOBID
+          python3 -u ./python/main.py --target=job_editor --jobid=$JOBID
       - name: Update Comment
         uses: peter-evans/create-or-update-comment@v1
         with:
