@@ -19,33 +19,6 @@ jobs:
     runs-on: self-hosted-mac
 
     steps:
-#       - name: Checkout test-projects
-#         uses: actions/checkout@v3
-#         with:
-#           repository: cocos/cocos-test-projects
-#           fetch-depth: 0
-#           ref: v3.7
-#           path: ../../cocos-test-projects
-#       - name: Checkout test-projects
-#         shell: bash
-#         run: |
-#           set -x
-#           VERSION="v3.7.3"
-#           AUTOTEST_VERSION='expr substr $VERSION 1 5'
-#           TEST_PROJECTS_EXTERNAL="../../cocos-test-projects"
-#           CCTEST_PLUGINS="../../TestAction/EXTENSIONS_DOWNLOAD"
-#           if [ ! -d $TEST_PROJECTS_EXTERNAL ]; then
-#               mkdir -p $TEST_PROJECTS_EXTERNAL
-#               git clone https://github.com/cocos/cocos-test-projects.git $PRECLONE_EXTERNAL
-#           else
-#               echo "directory $TEST_PROJECTS_EXTERNAL is ready"
-#           fi
-#           git -C $TEST_PROJECTS_EXTERNAL reset --hard
-#           git -C $TEST_PROJECTS_EXTERNAL fetch --all --prune
-#           git -C $TEST_PROJECTS_EXTERNAL checkout origin/$AUTOTEST_VERSION
-#           git -C $TEST_PROJECTS_EXTERNAL pull origin $AUTOTEST_VERSION --allow-unrelated-histories
-#           #rm -rf $TEST_PROJECTS_EXTERNAL/extensions/automation-framework
-#          # unzip -oq $CCTEST_PLUGINS/*.zip -d $TEST_PROJECTS_EXTERNAL/extensions/automation-framework
 
       - name: Run test cases
         timeout-minutes: 90
@@ -55,6 +28,7 @@ jobs:
           echo $JOBID
           cd ..
           python3 -u ./python/main.py --target=job_editor --jobid=$JOBID
+          Write-Host "::set-output name=pr_jobid::$JOBID"
       - name: Update Comment
         uses: peter-evans/create-or-update-comment@v1
         with:
