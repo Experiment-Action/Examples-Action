@@ -59,7 +59,7 @@ jobs:
         with:
           issue-number: 112
           body: |
-             Please check the result of `run test cases`:
+            @${{ steps.parse_pr.outputs.pr_author }}, Please check the result of `run test cases`:
             - Test Platform: PR-Test
             - Editor Version: ${{ steps.run_test_cases.outputs.editor }}
             - Task Result URL: http://cctest.cocos.org/#/reportview/PR-TEST/$JOBID/-1
@@ -68,10 +68,6 @@ jobs:
             ${{ steps.run_test_cases.outputs.report }}
 
 
-
-
-
-  
 
 # Creator-PR-RunTestCases:
 #     runs-on: self-hosted-mac
