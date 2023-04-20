@@ -28,7 +28,7 @@ jobs:
           echo $JOBID
           cd ..
           python3 -u ./python/main.py --target=job_editor --jobid=$JOBID
-          Write-Host "::set-output name=pr_jobid::$JOBID"
+          Write-Host "::set-output name=pr_jobid::{$JOBID}"
       - name: Update Comment
         uses: peter-evans/create-or-update-comment@v1
         with:
