@@ -51,7 +51,7 @@ jobs:
         timeout-minutes: 90
         id: run_test_cases
         run: |
-          JOBID=`cat  /usr/local/lib/node_modules/@cctest/scheduler/logs/PR-TEST/nowJobId.log`
+          JOBID=`cat  /Users/yonghu/prtest/nowJobId.log`
           cd ..
           python3 -u ./python/main.py --target=job_result --jobid=$JOBID
       - name: Update Comment
