@@ -26,26 +26,48 @@ jobs:
 #           fetch-depth: 0
 #           ref: v3.7
 #           path: ../../cocos-test-projects
-      - name: Checkout test-projects
-        shell: bash
+#       - name: Checkout test-projects
+#         shell: bash
+#         run: |
+#           set -x
+#           VERSION="v3.7.3"
+#           AUTOTEST_VERSION='expr substr $VERSION 1 5'
+#           TEST_PROJECTS_EXTERNAL="../../cocos-test-projects"
+#           CCTEST_PLUGINS="../../TestAction/EXTENSIONS_DOWNLOAD"
+#           if [ ! -d $TEST_PROJECTS_EXTERNAL ]; then
+#               mkdir -p $TEST_PROJECTS_EXTERNAL
+#               git clone https://github.com/cocos/cocos-test-projects.git $PRECLONE_EXTERNAL
+#           else
+#               echo "directory $TEST_PROJECTS_EXTERNAL is ready"
+#           fi
+#           git -C $TEST_PROJECTS_EXTERNAL reset --hard
+#           git -C $TEST_PROJECTS_EXTERNAL fetch --all --prune
+#           git -C $TEST_PROJECTS_EXTERNAL checkout origin/$AUTOTEST_VERSION
+#           git -C $TEST_PROJECTS_EXTERNAL pull origin $AUTOTEST_VERSION --allow-unrelated-histories
+#           #rm -rf $TEST_PROJECTS_EXTERNAL/extensions/automation-framework
+#          # unzip -oq $CCTEST_PLUGINS/*.zip -d $TEST_PROJECTS_EXTERNAL/extensions/automation-framework
+
+      - name: Run test cases
+        timeout-minutes: 90
+        id: run_test_cases
         run: |
-          set -x
-          VERSION="v3.7.3"
-          AUTOTEST_VERSION='expr substr $VERSION 1 5'
-          TEST_PROJECTS_EXTERNAL="../../cocos-test-projects"
-          CCTEST_PLUGINS="../../TestAction/EXTENSIONS_DOWNLOAD"
-          if [ ! -d $TEST_PROJECTS_EXTERNAL ]; then
-              mkdir -p $TEST_PROJECTS_EXTERNAL
-              git clone https://github.com/cocos/cocos-test-projects.git $PRECLONE_EXTERNAL
-          else
-              echo "directory $TEST_PROJECTS_EXTERNAL is ready"
-          fi
-          git -C $TEST_PROJECTS_EXTERNAL reset --hard
-          git -C $TEST_PROJECTS_EXTERNAL fetch --all --prune
-          git -C $TEST_PROJECTS_EXTERNAL checkout origin/$AUTOTEST_VERSION
-          git -C $TEST_PROJECTS_EXTERNAL pull origin $AUTOTEST_VERSION --allow-unrelated-histories
-          #rm -rf $TEST_PROJECTS_EXTERNAL/extensions/automation-framework
-         # unzip -oq $CCTEST_PLUGINS/*.zip -d $TEST_PROJECTS_EXTERNAL/extensions/automation-framework
+          JOBID=`cat  /usr/local/lib/node_modules/@cctest/scheduler/logs/PR-TEST/nowJobId.log`
+          cd ..
+          python3 -u ./python/main.py --target=job_result --jobid=$JOBID
+      - name: Update Comment
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          body: |
+             Please check the result of `run test cases`:
+            - Test Platform: PR-Test
+            - Editor Version: ${{ steps.run_test_cases.outputs.editor }}
+            - Task Result URL: http://cctest.cocos.org/#/reportview/PR-TEST/$JOBID/-1
+            - GitHub Action: https://github.com/cocos/cocos-engine/actions/runs/${{ github.run_id }}
+            ## Task Details
+            ${{ steps.run_test_cases.outputs.report }}
+
+
+
 
 
   
