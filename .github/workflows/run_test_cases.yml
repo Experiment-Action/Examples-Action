@@ -55,6 +55,7 @@ jobs:
           echo $JOBID
           cd ..
           python3 -u ./python/main.py --target=job_result --jobid=$JOBID
+          Write-Host "::set-output name=pr_jobid::$($JOBID)"
       - name: Update Comment
         uses: peter-evans/create-or-update-comment@v1
         with:
@@ -63,7 +64,7 @@ jobs:
             @${{ steps.parse_pr.outputs.pr_author }}, Please check the result of `run test cases`:
             - Test Platform: PR-Test
             - Editor Version: ${{ steps.run_test_cases.outputs.editor }}
-            - Task Result URL: http://cctest.cocos.org/#/reportview/PR-TEST/$JOBID/-1
+            - Task Result URL: http://cctest.cocos.org/#/reportview/PR-TEST/${{ steps.run_test_cases.outputs.pr_jobid }}/-1
             - GitHub Action: https://github.com/cocos/cocos-engine/actions/runs/${{ github.run_id }}
             ## Task Details
             ${{ steps.run_test_cases.outputs.report }}
