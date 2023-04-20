@@ -49,6 +49,7 @@ jobs:
 
       - name: Run test cases
         timeout-minutes: 90
+        shell: pwsh
         id: run_test_cases
         run: |
           JOBID=`cat  /Users/yonghu/prtest/nowJobId.log`
