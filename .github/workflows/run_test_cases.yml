@@ -45,7 +45,7 @@ jobs:
         run: |
           set -x
           VERSION="v3.7.3"
-          Test= echo $VERSION | cut -b -3
+          Test= `cut -b -4 $VERSION`
           echo $Test
 
 
