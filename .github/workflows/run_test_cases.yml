@@ -20,25 +20,38 @@ jobs:
 
     steps:
 
-      - name: Run test cases
-        timeout-minutes: 90
-        id: run_test_cases
+#       - name: Run test cases
+#         timeout-minutes: 90
+#         id: run_test_cases
+#         run: |
+#           JOBID=`cat /Users/yonghu/prtest/nowJobId.log`
+#           cd ..
+#           python3 -u ./python/main.py --target=job_editor --jobid=$JOBID
+#       - name: Update Comment
+#         uses: peter-evans/create-or-update-comment@v1
+#         with:
+#           issue-number: 112
+#           body: |
+#             @${{ steps.parse_pr.outputs.pr_author }}, Please check the result of `run test cases`:
+#             - Test Platform: PR-Test
+#             - Editor Version: ${{ steps.run_test_cases.outputs.editor }}
+#             - Task Result URL: http://cctest.cocos.org/#/reportview/PR-TEST/${{ steps.run_test_cases.outputs.jobid }}/-1
+#             - GitHub Action: https://github.com/cocos/cocos-engine/actions/runs/${{ github.run_id }}
+#             ## Task Details
+#             ${{ steps.run_test_cases.outputs.report }}
+
+      - name: Checkout test-projects
+        shell: bash
         run: |
-          JOBID=`cat /Users/yonghu/prtest/nowJobId.log`
-          cd ..
-          python3 -u ./python/main.py --target=job_editor --jobid=$JOBID
-      - name: Update Comment
-        uses: peter-evans/create-or-update-comment@v1
-        with:
-          issue-number: 112
-          body: |
-            @${{ steps.parse_pr.outputs.pr_author }}, Please check the result of `run test cases`:
-            - Test Platform: PR-Test
-            - Editor Version: ${{ steps.run_test_cases.outputs.editor }}
-            - Task Result URL: http://cctest.cocos.org/#/reportview/PR-TEST/${{ steps.run_test_cases.outputs.jobid }}/-1
-            - GitHub Action: https://github.com/cocos/cocos-engine/actions/runs/${{ github.run_id }}
-            ## Task Details
-            ${{ steps.run_test_cases.outputs.report }}
+          set -x
+          VERSION="v3.7.3"
+          Test=echo ${a:0:3}
+          echo $Test
+
+
+
+
+
 
 
 
